@@ -105,7 +105,7 @@ const SingleBlogPage = async ({ params }: { params: { id: string } }) => {
                   </li>
                   <li>
                     <span className="text-black dark:text-white">
-                      Category:
+                      Category: 
                     </span>
                     {blog.slug ? blog.slug : " unknow"}
                   </li>
