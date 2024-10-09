@@ -4,7 +4,7 @@ export type Blog = {
   slug?: any;
   metadata?: string;
   body?: string;
-  mainImage?: any;
+  mainImage?: string[];
   author?: string;
   tags?: string[];
   publishedAt?: string;

@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import cover001 from "@/public/images/siac/IMG_3516.jpg"
+import logo from "@/public/images/logo/noBg.png"
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -77,18 +79,18 @@ const Hero = () => {
                   height={21.66}
                   className="absolute -right-6.5 bottom-0 z-1"
                 />
-                <div className=" relative aspect-[700/444] w-full">
+                <div className="relative aspect-[700/444] w-full">
                   <Image
-                    className="shadow-solid-l dark:hidden"
-                    src="/images/hero/hero-light.svg"
+                    className="dark:hidden"
+                    src={logo}
                     alt="Hero"
-                    fill
+                    width={550}
                   />
                   <Image
-                    className="hidden shadow-solid-l dark:block"
-                    src="/images/hero/hero-dark.svg"
+                    className="hidden dark:block"
+                    src={logo}
                     alt="Hero"
-                    fill
+                    width={550}
                   />
                 </div>
               </div>

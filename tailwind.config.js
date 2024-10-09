@@ -13,6 +13,7 @@ module.exports = {
   theme: {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
+      siemreap: ['Siemreap', 'sans-serif'],
     },
     extend: {
       colors: {

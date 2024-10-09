@@ -28,9 +28,9 @@ export const getBlogDetailService = async (id: string) => {
             title: apiResponse.title,
             slug: apiResponse.category,
             metadata: apiResponse.description,
-            mainImage: apiResponse.images?.[0],
+            mainImage: apiResponse.images,
             author: apiResponse.author,
-            tags: apiResponse.tags ? apiResponse.tags.split(',') : [],
+            tags: apiResponse.tags,
             publishedAt: apiResponse.published,
         };
     } catch (error) {

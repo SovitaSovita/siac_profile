@@ -5,11 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import placeholder from "@/public/images/holder/placeholder.jpg"
 
-const BlogItem = ({ blog }: { blog: Blog }) => {
+const BlogItem = ({ blog }: { blog: any }) => {
   const { mainImage, title, metadata, _id } = blog;
-  const validImageSrc = mainImage && mainImage !== "no_link"
-    ? blog.mainImage
-    : placeholder;
 
   return (
     <>
@@ -32,9 +29,13 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
         className="animate_top rounded-lg bg-white p-4 pb-9 shadow-solid-8 dark:bg-blacksection"
       >
         <Link href={`/blog/blog-details/${_id}`} className="relative block aspect-[368/239]">
-          <Image src={mainImage && mainImage !== "no_link"
-            ? blog.mainImage
-            : placeholder} alt={title} fill />
+          <Image
+            src={
+              mainImage && mainImage !== "no_link"
+                ? mainImage
+                : placeholder
+            }
+            alt={title} fill />
         </Link>
 
         <div className="px-4">

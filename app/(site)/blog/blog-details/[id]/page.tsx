@@ -5,6 +5,7 @@ import { Blog } from "@/types/blog";
 import { Metadata } from "next";
 import Image from "next/image";
 import placeholder from "@/public/images/holder/placeholder.jpg"
+import { convertDateTime } from "@/utils/Helper";
 
 export const metadata: Metadata = {
   title: "Blog Details Page - Solid SaaS Boilerplate",
@@ -18,7 +19,7 @@ const SingleBlogPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <>
-      <section className="pb-20 pt-35 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50">
+      <section className="pb-20 pt-35 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-50 font-siemreap tracking-wide">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           <div className="flex flex-col-reverse gap-7.5 lg:flex-row xl:gap-12.5">
             <div className="md:w-1/2 lg:w-[32%]">
@@ -79,9 +80,11 @@ const SingleBlogPage = async ({ params }: { params: { id: string } }) => {
                 <div className="mb-10 w-full overflow-hidden ">
                   <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                     <Image
-                      src={blog.mainImage && blog.mainImage !== "no_link"
-                        ? blog.mainImage
-                        : placeholder}
+                      src={
+                        blog?.mainImage && blog?.mainImage.length > 0 && blog.mainImage[0] !== "no_link"
+                          ? blog.mainImage[0]
+                          : placeholder
+                      }
                       alt="Kobe Steel plant that supplied"
                       fill
                       className="rounded-md object-cover object-center"
@@ -100,28 +103,23 @@ const SingleBlogPage = async ({ params }: { params: { id: string } }) => {
                   </li>
                   <li>
                     <span className="text-black dark:text-white">
-                      Published On: {blog.publishedAt ? blog.publishedAt : " n/a"}
+                      Published On: {blog.publishedAt ? convertDateTime(blog.publishedAt) : " n/a"}
                     </span>{" "}
                   </li>
                   <li>
                     <span className="text-black dark:text-white">
-                      Category: 
+                      Category:
                     </span>
-                    {blog.slug ? blog.slug : " unknow"}
+                    {blog.slug ? " " + blog.slug : " unknow"}
                   </li>
                 </ul>
 
                 <div className="blog-details">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur
-                    leo. Ut venenatis rhoncus quam sed condimentum. Curabitur
-                    vel turpis in dolor volutpat imperdiet in ut mi. Integer non
-                    volutpat nulla. Nunc elementum elit viverra, tempus quam
-                    non, interdum ipsum.
+                    {blog.metadata}
                   </p>
 
-                  <p>
+                  {/* <p>
                     Aenean augue ex, condimentum vel metus vitae, aliquam porta
                     elit. Quisque non metus ac orci mollis posuere. Mauris vel
                     ipsum a diam interdum ultricies sed vitae neque. Nulla
@@ -130,38 +128,39 @@ const SingleBlogPage = async ({ params }: { params: { id: string } }) => {
                     eleifend laoreet, odio libero lobortis lectus, non porttitor
                     sem urna sit amet metus. In sollicitudin quam est,
                     pellentesque consectetur felis fermentum vitae.
-                  </p>
+                  </p> */}
 
                   <div className="flex flex-wrap gap-5">
                     <Image
-                      src={"/images/blog/blog-01.png"}
-                      width={350}
+                      src={
+                        blog?.mainImage && blog?.mainImage.length > 1 && blog.mainImage[1] !== "no_link"
+                          ? blog.mainImage[1]
+                          : placeholder
+                      } width={350}
                       height={200}
                       alt="image"
                     />
                     <Image
-                      src={"/images/blog/blog-02.png"}
-                      width={350}
+                      src={
+                        blog?.mainImage && blog?.mainImage.length > 2 && blog.mainImage[2] !== "no_link"
+                          ? blog.mainImage[2]
+                          : placeholder
+                      } width={350}
                       height={200}
                       alt="image"
                     />
                   </div>
 
-                  <h3 className="pt-8">
+                  {/* <h3 className="pt-8">
                     Nunc elementum elit viverra, tempus quam non
-                  </h3>
+                  </h3> */}
 
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc quis nibh lorem. Duis sed odio lorem. In a efficitur
-                    leo. Ut venenatis rhoncus quam sed condimentum. Curabitur
-                    vel turpis in dolor volutpat imperdiet in ut mi. Integer non
-                    volutpat nulla. Nunc elementum elit viverra, tempus quam
-                    non, interdum ipsum.
+                  <p className="pt-8">
+                    {blog.metadata}
                   </p>
                 </div>
 
-                <SharePost />
+                <SharePost blog={blog} />
               </div>
             </div>
           </div>
