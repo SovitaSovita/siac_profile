@@ -38,11 +38,10 @@ const Header = () => {
         <div className="flex w-full items-center justify-between xl:w-1/4">
           <a href="/">
             <Image
-              src="/images/logo/logo2.jpg"
-              alt="logo"
+              src="/images/logo/logo2.JPG"
               width={60}
               height={60}
-              className=""
+              alt="logo2"
             />
             {/* <Image
               src="/images/logo/logo-dark.svg"
